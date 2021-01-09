@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hello World - Hexo</title>
+  <title>ACwing 每日一题 - Hexo</title>
   
 
   
@@ -399,7 +399,7 @@
     
     
       <h1 class="title">
-        Hello World
+        ACwing 每日一题
       </h1>
       <div class='new-meta-box'>
         
@@ -434,7 +434,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Hello World" data-path="/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/">
+      <div id="lc-pv" data-title="ACwing 每日一题" data-path="/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -451,16 +451,19 @@
 
 
   
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+  <h4 id="acwing每日一题"><a href="#acwing每日一题" class="headerlink" title="acwing每日一题"></a>acwing每日一题</h4><p> <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/106/">原题链接</a></p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>在一条数轴上有 $N$ 家商店，它们的坐标分别为 $A1~AN$<br>现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品<br>为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行输入整数$N$<br>第二行$N$个整数$A_1-A_n$</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示距离之和的最小值</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>$ 1\le N \le 100000 $<br>$0\le A_i \le 40000 $</p>
+<h4 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h4><blockquote>
+<p>4<br>6 2 9 1</p>
+</blockquote>
+<h4 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h4><blockquote>
+<p>12</p>
+</blockquote>
+<h4 id="排序-中位数"><a href="#排序-中位数" class="headerlink" title="排序+中位数"></a>排序+中位数</h4><p>中位数有非常优秀的性质，比如说在这道题目中，每一个点到中位数的距离，都是满足全局的最有性，而不是局部最优性。<br>具体的来说，我们设在仓库左边的所有点，到仓库的距离之和为$p$,右边的距离之和则为$q$，那么我们就必须让$p+qp+q$的值尽量小。<br>当仓库向左移动的话，$p$会减少$x$，但是$q$会增加$n−xn−x$，所以说当为仓库中位数的时候,$p+q$最小。<br>还是同样的一句话，画图理解很重要。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N&#x3D;100100;</span><br><span class="line">int a[N],n,i,ans,sum;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    for (i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        cin&gt;&gt;a[i];</span><br><span class="line">    sort(a+1,a+1+n);&#x2F;&#x2F;排序</span><br><span class="line">    int sm&#x3D;a[n&#x2F;2+1];&#x2F;&#x2F;中位数</span><br><span class="line">    for (i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        ans&#x3D;ans+abs(a[i]-sm);&#x2F;&#x2F;统计和中位数之间的差</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
   
     
@@ -494,10 +497,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-08T16:11:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-09T17:37:38+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jan 8, 2021</p>
+    <p>更新于：Jan 9, 2021</p>
   </a>
 </div>
 
@@ -516,7 +519,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=Hello World - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=ACwing 每日一题 - Hexo&summary="
           
           >
           
@@ -528,7 +531,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=Hello World - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=ACwing 每日一题 - Hexo&summary="
           
           >
           
@@ -540,7 +543,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=Hello World - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/&title=ACwing 每日一题 - Hexo&summary="
           
           >
           
@@ -568,16 +571,6 @@
   
 
   
-    <div class="prev-next">
-      
-      
-        <a class='next' href='/2021/01/08/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(4)/'>
-          <p class='title'>Hello World<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any ...</p>
-        </a>
-      
-    </div>
-  
 </article>
 
 
@@ -594,6 +587,59 @@
 
 
 
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
@@ -616,7 +662,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#acwing%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98"><span class="toc-text">acwing每日一题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-text">题目大意</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="toc-text">输入样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-text">输出样例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F-%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="toc-text">排序+中位数</span></a></li></ol>
     </div>
   </section>
 
@@ -636,7 +682,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Hello World";
+  pdata.postTitle="ACwing 每日一题";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
@@ -1229,7 +1275,7 @@ var loadCSS = function( href, before, media, attributes ){
       lang: 'zh-cn',
       visitor: 'true',
       highlight: 'true',
-      mathJax: 'false',
+      mathJax: 'true',
       enableQQ: 'true',
       recordIP: 'false',
       requiredFields: requiredFields,
