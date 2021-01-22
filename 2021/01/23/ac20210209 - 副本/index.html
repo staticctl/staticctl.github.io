@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive - Hexo</title>
+  <title>递归函数转非递归 - Hexo</title>
   
 
+  
+    <meta name="description" content="将递归函数转化为非递归函数 通用方法">
   
 
   <!-- feed -->
@@ -56,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -391,79 +391,283 @@
         
 
 <div class='l_main'>
-	
-	  <article id="arc" class="post article white-box reveal shadow">
-			
-			
-				
-				
-					
-						
-						<h2>2021</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/01/23/ac20210209%20-%20%E5%89%AF%E6%9C%AC/">
-									<time>01-23</time>
-									
-										递归函数转非递归
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/01/12/mysql/">
-									<time>01-12</time>
-									
-										MySQL 复习
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/01/11/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/">
-									<time>01-11</time>
-									
-										MySQL 学习
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2021/01/08/ac20210209/">
-									<time>01-08</time>
-									
-										ACwing 每日一题
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        递归函数转非递归
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>太龙其实一般般</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jan 23, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="递归函数转非递归" data-path="/2021/01/23/ac20210209%20-%20%E5%89%AF%E6%9C%AC/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h4 id="转换思路"><a href="#转换思路" class="headerlink" title="转换思路"></a>转换思路</h4><p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/151322731">思路1</a><br> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/151380432">思路2</a></p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>斐波那契 递归版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int fibonacci(int n) &#123;</span><br><span class="line">        if (n &#x3D;&#x3D; 0 || n &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return fibonacci(n - 1) + fibonacci(n - 2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>找到其中的方法调用，标记上 flag，并分析需要的局部变量，将代码改写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int fibonacci(int n) &#123;</span><br><span class="line">    &#x2F;&#x2F; flag 0 函数入口</span><br><span class="line">    if (n &#x3D;&#x3D; 0 || n &#x3D;&#x3D; 1) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int result0 &#x3D; fibonacci(n - 1);</span><br><span class="line">        &#x2F;&#x2F; flag 1 第一个函数调用结束</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 拿到第一个函数的返回值，保存为局部遍历</span><br><span class="line">        int localVariable0 &#x3D; result0;</span><br><span class="line"></span><br><span class="line">        int result1 &#x3D; fibonacci(n - 2);</span><br><span class="line">        &#x2F;&#x2F; flag 2 第二个函数调用结束</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 拿到第二个函数的返回值</span><br><span class="line">        int localVariable1 &#x3D; result1;</span><br><span class="line">        return localVariable0 + localVariable1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见函数的栈帧为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;null&#x2F;*result*&#x2F;,0&#x2F;*flag*&#x2F;,n&#x2F;*入参*&#x2F;,null&#x2F;*第一个局部变量*&#x2F;,null&#x2F;*第二个局部变量*&#x2F;&#125;</span><br></pre></td></tr></table></figure>
+<p>由此转写为非递归形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">int fibonacciNoRecur(int n) &#123;</span><br><span class="line">        Deque&lt;Object[]&gt; stack &#x3D; new ArrayDeque&lt;&gt;(64); &#x2F;&#x2F;栈 调用层数最大 64</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 当前函数(fibonacciNoRecur)的栈帧，栈帧size&#x3D;1,仅用来接收递归调用的返回值</span><br><span class="line">        Object[] frameOfFibonacciNoRecur &#x3D; &#123;null&#125;;</span><br><span class="line">        stack.push(frameOfFibonacciNoRecur); &#x2F;&#x2F; 入栈</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 函数调用第一层</span><br><span class="line">        &#x2F;&#x2F; 栈帧含义：</span><br><span class="line">        &#x2F;&#x2F; [0] 接收调用函数的返回值</span><br><span class="line">        &#x2F;&#x2F; [1] flag，标记递归函数执行的位置</span><br><span class="line">        &#x2F;&#x2F; [2] 入参，只有一个，即 n</span><br><span class="line">        &#x2F;&#x2F; [3] [4] 两个局部变量</span><br><span class="line">        Object[] callFrame &#x3D; &#123;null, 0, n, null, null&#125;;</span><br><span class="line">        stack.push(callFrame);</span><br><span class="line"></span><br><span class="line">        while (stack.size() &gt; 1) &#123;&#x2F;&#x2F; 如果栈大于 1，表示递归没有结束</span><br><span class="line">            Object[] frame &#x3D; stack.peek();&#x2F;&#x2F; 获取当前栈帧，peek()不退栈</span><br><span class="line">            int arg0 &#x3D; (int) frame[2];&#x2F;&#x2F; 当前入参</span><br><span class="line">            int flag &#x3D; (int) frame[1];&#x2F;&#x2F; 当前 flag 标志位</span><br><span class="line">            switch (flag) &#123;</span><br><span class="line">                case 0: &#x2F;&#x2F; flag &#x3D;&#x3D; 0 函数入口</span><br><span class="line">                    if (arg0 &#x3D;&#x3D; 0 || arg0 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                        stack.pop();&#x2F;&#x2F; 退栈</span><br><span class="line">                        stack.peek()[0] &#x3D; 1;&#x2F;&#x2F; 将返回值给调用者，即此时栈顶栈帧 0 号位置</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        &#x2F;&#x2F;函数调用，开辟栈空间</span><br><span class="line">                        stack.push(new Object[]&#123;null, 0, arg0 - 1, null, null&#125;);</span><br><span class="line">                        frame[1] &#x3D; 1;&#x2F;&#x2F; 修改当前栈帧的 flag&#x3D;1</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                case 1: &#x2F;&#x2F; flag &#x3D;&#x3D; 1 第一个函数调用结束</span><br><span class="line">                    int return1 &#x3D; (int) frame[0];&#x2F;&#x2F; 拿到返回值，位于当前栈帧的 0 号位置</span><br><span class="line">                    frame[3] &#x3D; return1;&#x2F;&#x2F; 将返回值存入局部变量</span><br><span class="line">                    stack.push(new Object[]&#123;null, 0, arg0 - 2, null, null&#125;);&#x2F;&#x2F; 第二次函数调用</span><br><span class="line">                    frame[1] &#x3D; 2;&#x2F;&#x2F; 修改当前栈帧的 flag&#x3D;2</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    int return2 &#x3D; (int) frame[0];&#x2F;&#x2F; 拿到返回值，位于当前栈帧的 0 号位置</span><br><span class="line">                    frame[4] &#x3D; return2;&#x2F;&#x2F; 将返回值存入局部变量</span><br><span class="line">                    int localVariable0 &#x3D; (int) frame[3];&#x2F;&#x2F; 取出局部变量</span><br><span class="line">                    int localVariable1 &#x3D; (int) frame[4];</span><br><span class="line">                    &#x2F;&#x2F; 退栈</span><br><span class="line">                    stack.pop();&#x2F;&#x2F; 退栈</span><br><span class="line">                    stack.peek()[0] &#x3D; localVariable0 + localVariable1;&#x2F;&#x2F; 将返回值给调用者，即此时栈顶栈帧 0 号位置</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 递归调用结束，此时栈顶即当前函数(fibonacciNoRecur)的栈帧</span><br><span class="line">        frameOfFibonacciNoRecur &#x3D; stack.pop();</span><br><span class="line">        return (int) frameOfFibonacciNoRecur[0];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p><a target="_blank" rel="noopener" href="https://chentailong.club/">https://chentailong.club/</a></p>
+
+              
+            
+          </blockquote>
+        </div>
+      
+      
+        <div class='donate'>
+          <div class='imgs'>
+            
+              <img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'>
+            
+              <img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'>
+            
+          </div>
+        </div>
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-23T05:48:07+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jan 23, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2021/01/23/ac20210209%20-%20%E5%89%AF%E6%9C%AC/&title=递归函数转非递归 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2021/01/23/ac20210209%20-%20%E5%89%AF%E6%9C%AC/&title=递归函数转非递归 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2021/01/23/ac20210209%20-%20%E5%89%AF%E6%9C%AC/&title=递归函数转非递归 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/01/12/mysql/'>
+          <p class='title'>MySQL 复习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>本单元目标一、为什么要学习数据库
+二、数据库的相关概念      
+    DBMS、DB、SQL
+三、数据库存储数据的特点
+四、初始MySQL
+    MySQL产品的介绍        
+ ...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -471,87 +675,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:2669697029@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/staticctl/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%80%9D%E8%B7%AF"><span class="toc-text">转换思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -561,14 +706,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="递归函数转非递归";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
